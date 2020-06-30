@@ -1,1 +1,10 @@
 buildPack: go
+pipelineConfig:
+  pipelines:
+    release:
+      setVersion:
+        replace: true
+        steps:
+          - name: next-version
+            sh: jx step next-version --semantic-release --tag
+            comment: set the version number using semantic-release and create a new release tag
